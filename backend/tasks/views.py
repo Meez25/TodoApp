@@ -1,6 +1,7 @@
 from rest_framework import viewsets, mixins
 from .serialiers import TaskSerializer, CategorySerializer
 from .models import Category, Task
+from django.http import JsonResponse
 
 
 class CategoryViewSet(mixins.ListModelMixin,
@@ -38,3 +39,7 @@ class TaskViewSet(mixins.ListModelMixin,
             queryset = queryset.filter(category_id=category_id)
 
         return queryset
+
+
+def health_check(request):
+    return JsonResponse({"status": "ok", "message": "API is healthy"})
