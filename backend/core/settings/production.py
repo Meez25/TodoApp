@@ -20,15 +20,21 @@ DATABASES = {
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+sentry_sdk.init(
+    dsn="https://8f1da3292126a0db2510b522f74480e6@o4505952734216192.ingest.us.sentry.io/4510850773811200",
+    # Add data like request headers and IP for users,
+    # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+    send_default_pii=True,
+)
 
-if not SENTRY_DSN:
-    print("SENTRY_DNS not found")
-if SENTRY_DSN:
-    print("Sentry DSN is here", SENTRY_DSN)
-    sentry_sdk.init(
-        dsn=SENTRY_DSN,
-        # Add data like request headers and IP for users,
-        # see https://docs.sentry.io/platforms/python/data-management/data-collected/
-        # for more info
-        send_default_pii=True,
-    )
+# if not SENTRY_DSN:
+#     print("SENTRY_DNS not found")
+# if SENTRY_DSN:
+#     print("Sentry DSN is here", SENTRY_DSN)
+#     sentry_sdk.init(
+#         dsn=SENTRY_DSN,
+#         # Add data like request headers and IP for users,
+#         # see https://docs.sentry.io/platforms/python/data-management/data-collected/
+#         # for more info
+#         send_default_pii=True,
+#     )
