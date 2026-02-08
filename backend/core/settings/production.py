@@ -21,6 +21,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
+if not SENTRY_DSN:
+    print("SENTRY_DNS not found")
 if SENTRY_DSN:
     print("Sentry DSN is here", SENTRY_DSN)
     sentry_sdk.init(
