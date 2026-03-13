@@ -6,7 +6,6 @@ import { AddTask } from './components/AddTask';
 import { TaskDisplay } from './components/TaskDisplay';
 import { ErrorMessage, SuccessMessage } from './components/ErrorMessage';
 import { useCategories, useTasks } from './api.js'
-import * as Sentry from '@sentry/react';
 
 function App() {
   const [filter, setFilter] = useState("all");
