@@ -6,6 +6,7 @@ import { AddTask } from './components/AddTask';
 import { TaskDisplay } from './components/TaskDisplay';
 import { ErrorMessage, SuccessMessage } from './components/ErrorMessage';
 import { useCategories, useTasks } from './api.js'
+import * as Sentry from '@sentry/react';
 
 function App() {
   const [filter, setFilter] = useState("all");
@@ -138,6 +139,13 @@ function App() {
         handleTaskSubmit={handleTaskSubmit}
         categoryList={categories?.map(cat => cat.name) || []}
       />
+
+      <button
+        onClick={() => { throw new Error('This is your first error!'); }}
+        style={{ margin: '10px', padding: '8px 16px', backgroundColor: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+      >
+        Break the world
+      </button>
 
       <TaskDisplay
         taskList={taskList || []}
