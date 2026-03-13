@@ -101,12 +101,12 @@ export const useApi = (url, options = {}) => {
 };
 
 export const useCategories = () => {
-  return useApi('/categories/');
+  return useApi('categories/');
 };
 
 export const useTasks = (categoryId = null) => {
   const queryParams = categoryId ? { category_id: categoryId } : null;
-  const hook = useApi('/tasks/', { autoFetch: false });
+  const hook = useApi('tasks/', { autoFetch: false });
 
   useEffect(() => {
     hook.fetchData(queryParams); // eslint-disable-next-line react-hooks/exhaustive-deps
